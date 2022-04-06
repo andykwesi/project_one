@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:project_one/transaction.dart';
+import 'package:project_one/models/transaction.dart';
+import 'package:project_one/widgets/user_transaction.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -12,21 +13,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> transactions = [
-    Transaction(
-        id: "t1", title: "New Shoes", amount: 100.00, date: DateTime.now()),
-    Transaction(
-        id: "t2",
-        title: "Weekly Groceries",
-        amount: 700.00,
-        date: DateTime.now())
-  ];
-  @override
-  void initState() {
-    // TODO: implement initState
-    print("Transactions");
-    print(transactions[0].title);
-  }
+  final List<Transaction> transactions = [];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Flutter App"),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -48,59 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 5,
             ),
           ),
-          Column(
-            children: transactions.map((tx) {
-              return Card(
-                child: Row(
-                  children: [
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple, width: 2)),
-                      padding: EdgeInsets.all(10),
-                      child: Text(
-                        tx.amount.toString(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.purple,
-                        ),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(tx.title.toString(),
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 18,
-                            )),
-                        Text(
-                          tx.date.toString(),
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        )
-                      ],
-                    )
-
-                    // Column(
-                    //   children: [
-                    //     Text(tx.date.toString(),
-                    //     style: TextStyle(
-                    //       color: Colors.grey,
-                    //     ) ,
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
-                ),
-              );
-            }).toList(),
-          )
+          UserTransaction()
         ],
       ),
     );
   }
 }
+
+class NewTranscation {}
