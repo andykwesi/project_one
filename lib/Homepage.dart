@@ -69,11 +69,31 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(tx.title),Text(tx.date.toString()
-                        ),
+                        Text(tx.title.toString(),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                            )),
+                        Text(
+                          tx.date.toString(),
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        )
                       ],
                     )
+
+                    // Column(
+                    //   children: [
+                    //     Text(tx.date.toString(),
+                    //     style: TextStyle(
+                    //       color: Colors.grey,
+                    //     ) ,
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               );
