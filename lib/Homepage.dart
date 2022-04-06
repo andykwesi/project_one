@@ -70,8 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Column(
                       children: [
-                        Text(tx.title),
-                        Text(tx.date.toString()),
+                        Text(tx.title),Text(tx.date.toString()
+                        ),
                       ],
                     )
                   ],
