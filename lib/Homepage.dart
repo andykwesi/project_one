@@ -22,21 +22,23 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.green,
         title: Text("Flutter App"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            color: Colors.blue,
-            width: double.infinity,
-            child: const Card(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
               color: Colors.blue,
-              child: Text("CHART"),
-              elevation: 5,
+              width: double.infinity,
+              child: const Card(
+                color: Colors.blue,
+                child: Text("CHART"),
+                elevation: 5,
+              ),
             ),
-          ),
-          UserTransaction()
-        ],
+            UserTransaction()
+          ],
+        ),
       ),
     );
   }

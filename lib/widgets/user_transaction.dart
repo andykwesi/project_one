@@ -28,7 +28,7 @@ class _UserTransactionState extends State<UserTransaction> {
         title: txTitle,
         amount: txAmount,
         date: DateTime.now());
-
+        
     setState(() {
       _usertransaction.add(newTx);
     });
