@@ -1,17 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:project_one/widgets/user_transaction.dart';
 
-class NewTransaction extends StatefulWidget {
- 
-
-  @override
-  State<NewTransaction> createState() => _NewTransactionState();
-}
-
-class _NewTransactionState extends State<NewTransaction> {
-  final TextEditingController  TitleController = TextEditingController();
-
+class NewTransaction extends StatelessWidget {
+  NewTransaction(this.addTx);
+  final Function addTx;
+  final TextEditingController TitleController = TextEditingController();
   final TextEditingController AmountController = TextEditingController();
 
   @override
@@ -33,14 +28,12 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               TextButton(
                 onPressed: () {
-                  print(TitleController.text);
-                  print(AmountController.text);
+                  addTx(TitleController.text, double.parse(AmountController.text));
                 },
                 child: Text("Add a Transaction"),
               )
             ],
           ),
-        )
-        );
+        ));
   }
 }
