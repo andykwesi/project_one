@@ -1,13 +1,26 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:project_one/widgets/user_transaction.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   NewTransaction(this.addTx);
   final Function addTx;
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final TextEditingController TitleController = TextEditingController();
+
   final TextEditingController AmountController = TextEditingController();
+
+  void submitData() {
+    if (TitleController.text.isEmpty || AmountController.text.isEmpty) {
+      return;
+    }
+    widget.addTx(TitleController.text, double.parse(AmountController.text));
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +36,13 @@ class NewTransaction extends StatelessWidget {
                 controller: TitleController,
               ),
               TextField(
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
                 decoration: InputDecoration(labelText: "Amount"),
                 controller: AmountController,
               ),
               TextButton(
                 onPressed: () {
-                  addTx(TitleController.text, double.parse(AmountController.text));
+                  submitData();
                 },
                 child: Text("Add a Transaction"),
               )
