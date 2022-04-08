@@ -9,7 +9,7 @@ class UserTransaction extends StatefulWidget {
   const UserTransaction({Key? key}) : super(key: key);
 
   @override
-  State<UserTransaction> createState() => _UserTransactionState();
+  _UserTransactionState createState() => _UserTransactionState();
 }
 
 class _UserTransactionState extends State<UserTransaction> {
@@ -28,7 +28,7 @@ class _UserTransactionState extends State<UserTransaction> {
         title: txTitle,
         amount: txAmount,
         date: DateTime.now());
-        
+
     setState(() {
       _usertransaction.add(newTx);
     });
@@ -37,7 +37,9 @@ class _UserTransactionState extends State<UserTransaction> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [NewTransaction(), TransactionList(_usertransaction)],
+      children: [
+      NewTransaction(_addNewTransaction), 
+      TransactionList(_usertransaction)],
     );
   }
 }
