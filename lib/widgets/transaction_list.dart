@@ -16,7 +16,10 @@ class TransactionList extends StatelessWidget {
           ? Column(
               children: [
                 Text("No transactions added yet!"),
-                Image.asset("assets/images/waiting.png")
+                Image.asset(
+                  "assets/images/waiting.png",
+                  fit: BoxFit.cover,
+                )
               ],
             )
           : ListView.builder(

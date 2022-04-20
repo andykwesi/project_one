@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_one/models/transaction.dart';
+import 'package:project_one/widgets/chart.dart';
 import 'package:project_one/widgets/new_transaction.dart';
 import 'package:project_one/widgets/transaction_list.dart';
 
@@ -36,6 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+
+  // List<Transaction> get _recentTransactions {
+  //   return _usertransaction.where((tx){
+  //     return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7));)
+  //   });
+  // }
+
   void startAddNewTransaction(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -49,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("Personal Expenses"),
+        title: Text("Personal Expenses App"),
         actions: [
           IconButton(
               onPressed: () {
@@ -63,15 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              color: Theme.of(context).primaryColor,
-              width: double.infinity,
-              child: Card(
-                color: Theme.of(context).primaryColor,
-                child: Text("CHART"),
-                elevation: 5,
-              ),
-            ),
+            Chart(recentTransactions: _usertransaction),
             TransactionList(_usertransaction)
           ],
         ),
