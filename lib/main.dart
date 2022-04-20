@@ -15,8 +15,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+          primarySwatch: Colors.green,
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(fontFamily: "OpenSans", fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+          )),
       home: MyHomePage(title: ''),
     );
   }

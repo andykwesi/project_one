@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:project_one/models/transaction.dart';
+import 'package:project_one/widgets/chart.dart';
 import 'package:project_one/widgets/new_transaction.dart';
 import 'package:project_one/widgets/transaction_list.dart';
 
@@ -16,13 +17,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> transactions = [];
   final List<Transaction> _usertransaction = [
-    Transaction(
-        id: "t1", title: "New Shoes", amount: 100.00, date: DateTime.now()),
-    Transaction(
-        id: "t2",
-        title: "Weekly Groceries",
-        amount: 700.00,
-        date: DateTime.now())
+    // Transaction(
+    //     id: "t1", title: "New Shoes", amount: 100.00, date: DateTime.now()),
+    // Transaction(
+    //     id: "t2",
+    //     title: "Weekly Groceries",
+    //     amount: 700.00,
+    //     date: DateTime.now())
   ];
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
@@ -35,6 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
       _usertransaction.add(newTx);
     });
   }
+
+
+  // List<Transaction> get _recentTransactions {
+  //   return _usertransaction.where((tx){
+  //     return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7));)
+  //   });
+  // }
 
   void startAddNewTransaction(BuildContext context) {
     showModalBottomSheet(
@@ -49,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("Personal Expenses"),
+        title: Text("Personal Expenses App"),
         actions: [
           IconButton(
               onPressed: () {
@@ -63,16 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              color: Theme.of(context).primaryColor,
-              width: double.infinity,
-              child: Card(
-                color: Theme.of(context).primaryColor,
-                child: Text("CHART"),
-                elevation: 5,
-              ),
-            ),
-            // TransactionList(_usertransaction)
+            Chart(recentTransactions: _usertransaction),
+            TransactionList(_usertransaction)
           ],
         ),
       ),
