@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Personal Expenses',
+      title: 'Personal Expense',
       theme: ThemeData(
           primarySwatch: Colors.green,
           appBarTheme: AppBarTheme(
