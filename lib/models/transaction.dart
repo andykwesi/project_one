@@ -3,6 +3,8 @@ class Transaction {
   final String title;
   final double amount;
   final DateTime date;
+  
+  // Transaction Model
 
   Transaction({
     required this.id,
